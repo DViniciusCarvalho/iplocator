@@ -1,15 +1,14 @@
+import { ValidationResponse } from "./types/types";
+
 const buttonElement = document.querySelector(".search__location__button") as HTMLButtonElement;
 const ipv4Element = document.querySelector(".ip__input") as HTMLInputElement;
 const responseElement = document.querySelector(".response__block") as HTMLPreElement;
 
 buttonElement.addEventListener("click", searchIpLocation);
 
-interface ValidationResponse {
-    validIp: boolean;
-    invalidationMessage: string;
-}
 
 async function searchIpLocation(): Promise<void> {
+    
     const ipAddress = ipv4Element.value;
     const apiUrl = `https://ipapi.co/${ipAddress}/json/`;
 
@@ -17,6 +16,7 @@ async function searchIpLocation(): Promise<void> {
 
     if (validIp) {
         try {
+
             const response = await fetch(apiUrl);
             const data = await response.json();
 
@@ -34,13 +34,15 @@ async function searchIpLocation(): Promise<void> {
             showResponse("Not found");
         }
     }
-    else{
+    else {
         showResponse(invalidationMessage);
     }
+
 }
 
 function isValidIp(ipAddress: string): ValidationResponse {
-    const ipv4RegEx = /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.|$)){4}$/;
+
+    const ipv4RegEx = /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])(\.|$)){4}$/;
 
     const validations = [
         {
@@ -57,12 +59,16 @@ function isValidIp(ipAddress: string): ValidationResponse {
         }
     ]
 
-    const { condition, message } = validations.find(validation => validation.condition()) || {};
+    const { condition, message } = validations.find(validation => validation.condition()) || {
+        condition: () => false,
+        message: ""
+    };
 
     return {
-        validIp: !(() => condition!()),
-        invalidationMessage: message || ""
+        validIp: !condition(),
+        invalidationMessage: message
     };
+
 }
 
 function showResponse(
