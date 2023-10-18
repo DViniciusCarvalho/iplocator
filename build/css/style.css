@@ -34,12 +34,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 20px;
+  padding: 0px 18px;
   width: 100%;
   height: 20%;
 }
 .container .info__wrapper .ip__input {
-  width: 75%;
+  width: 72%;
   height: 40%;
   border: 1px solid black;
   border-radius: 10px;
@@ -53,12 +53,12 @@ body {
   outline: 0;
 }
 .container .info__wrapper .search__location__button {
-  width: 24%;
+  width: 26%;
   height: 40%;
   border: 1px solid black;
   border-radius: 10px;
   background-color: rgb(50, 54, 70);
-  font-size: 1.03em;
+  font-size: 0.9em;
   border: 0.1px solid rgba(101, 107, 119, 0.521);
   color: white;
   transition: background-color 0.5s, transform 0.5s;
@@ -72,7 +72,7 @@ body {
   justify-content: center;
   width: 100%;
   height: 80%;
-  padding: 20px;
+  padding: 18px;
 }
 .container .response__wrapper .response__block {
   width: 100%;
