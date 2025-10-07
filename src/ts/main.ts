@@ -10,7 +10,7 @@ buttonElement.addEventListener("click", searchIpLocation);
 async function searchIpLocation(): Promise<void> {
     
     const ipAddress = ipv4Element.value;
-    const apiUrl = `https://ipapi.co/${ipAddress}/json/`;
+    const apiUrl = `https://api.ipgeolocation.io/v2/ipgeo?apiKey=af2a6fe19dd7419ea1db6c59fe71b1a9&ip=${ipAddress}`;
 
     const { validIp, invalidationMessage } = isValidIp(ipAddress);
 
@@ -22,11 +22,11 @@ async function searchIpLocation(): Promise<void> {
 
             showResponse(
                 undefined, 
-                data.city, 
-                data.region, 
-                data.country_name, 
-                data.latitude, 
-                data.longitude
+                data.location.city, 
+                data.location.district, 
+                data.location.country_name, 
+                data.location.latitude, 
+                data.location.longitude
             );
 
         }
