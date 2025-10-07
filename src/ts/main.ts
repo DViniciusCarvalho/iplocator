@@ -23,7 +23,7 @@ async function searchIpLocation(): Promise<void> {
             showResponse(
                 undefined, 
                 data.location.city, 
-                data.location.district, 
+                data.location.state_prov, 
                 data.location.country_name, 
                 data.location.latitude, 
                 data.location.longitude
