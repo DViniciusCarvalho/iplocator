@@ -89,7 +89,7 @@ function showResponse(
     }
 
     const cityMessage = `City: "${city}"`;
-    const regionMessage = `Region: "${region}"`;
+    const regionMessage = `State: "${region}"`;
     const countryMessage = `Country: "${country}"`;
     const latitudeMessage = `Latitude: ${latitude}`;
     const longitudeMessage = `Longitude: ${longitude}`;
